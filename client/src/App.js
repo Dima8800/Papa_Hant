@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Items from "./components/Items"
+import Categories from "./components/Categories";
 
 class App extends React.Component {
   constructor(props){
@@ -14,7 +15,7 @@ class App extends React.Component {
           title: 'Кошелек c одним карманом',
           img: 'first-kosh.jpg',
           desc: 'Натуральная кожа1',
-          category: 'кошелек',
+          category: 'kosh',
           price: '5000'
         },
         {
@@ -22,12 +23,20 @@ class App extends React.Component {
           title: 'Кошелек с двумя карманами',
           img: 'second-kosh.jpg',
           desc: 'Натуральная кожа2',
-          category: 'кошелек',
+          category: 'kosh',
           price: '6000'
         },
         {
           id: 3,
           title: 'сумка для мужчины',
+          img: 'first-symka.jpg',
+          desc: 'Натуральная кожа3',
+          category: 'symka',
+          price: '5000'
+        },
+        {
+          id: 4,
+          title: 'сумка для ;tyoby',
           img: 'first-symka.jpg',
           desc: 'Натуральная кожа3',
           category: 'сумка',
@@ -43,6 +52,7 @@ class App extends React.Component {
     return (
       <div className="wrapper">
         <Header orders={this.state.orders} onDelete={this.deleteOrder} />
+        <Categories />
         <Items items = {this.state.items} onAdd={this.addToOrder} />
         <Footer/>
       </div>
@@ -50,7 +60,7 @@ class App extends React.Component {
   }
 
   deleteOrder(id){
-    console.log(id)
+    this.setState({orders: this.state.orders.filter(el => el.id !== id)})
   }
 
   addToOrder(item){
