@@ -39,7 +39,7 @@ class App extends React.Component {
           title: 'сумка для ;tyoby',
           img: 'first-symka.jpg',
           desc: 'Натуральная кожа3',
-          category: 'сумка',
+          category: 'symka',
           price: '5000'
         }
       ]
