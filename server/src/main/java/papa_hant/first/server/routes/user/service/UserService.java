@@ -118,7 +118,23 @@ public class UserService {
         }
     }
 
-    private boolean roleVerification(String Authorization){
+    /**
+     * Сделать пользователя админом
+     * */
+
+    public Response setAdmin(Long id){
+        try {
+            User user = this.repository.findById(id).get();
+            user.setRole(Role.admin);
+
+            this.repository.save(user);
+            return new Response(HttpStatus.OK.value(), "Успешно выолпнеон");
+        }catch (Exception err){
+            return new Response(HttpStatus.INTERNAL_SERVER_ERROR.value(), err.getMessage());
+        }
+    }
+
+    public boolean roleVerification(String Authorization){
         User admin = this.repository.findById(
                 tokenService.getUserIdFromJWT(Authorization)
         ).get();

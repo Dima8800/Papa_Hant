@@ -33,4 +33,9 @@ public class UserController {
     public Response banUserById(@RequestHeader String Authorization, @PathVariable Long id, @RequestBody String banReason){
         return this.userService.banUserById(Authorization, id, banReason);
     }
+
+    @PutMapping("/admin/{id}")
+    public Response setAdmin(@PathVariable Long id){
+        return this.userService.setAdmin(id);
+    }
 }

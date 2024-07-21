@@ -2,10 +2,10 @@ package papa_hant.first.server.routes.product;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import papa_hant.first.server.App.models.Response.Types.Response;
+import papa_hant.first.server.routes.product.entity.dto.SortDto;
+import papa_hant.first.server.routes.product.entity.dto.ProductDto;
 import papa_hant.first.server.routes.product.service.ProductService;
 
 @Tag(name = "Сервис товаров")
@@ -16,28 +16,32 @@ public class ProductController {
     private final ProductService service;
 
     @PostMapping()
-    public Response saveProduct(){
-        return null;
+    public Response saveProduct(@RequestBody ProductDto dto){
+        return this.service.saveProduct(dto);
     }
 
-
-    public Response editProduct(){
-        return null;
+    @PutMapping("/discount/{id}")
+    public Response setDiscountById(@PathVariable Long id, @RequestBody int discount){
+        return this.service.setDiscountById(id, discount);
     }
 
-    public Response deleteById(){
-        return null;
+    @PutMapping("/{id}")
+    public Response editProduct(@PathVariable Long id, @RequestBody ProductDto dto){
+        return this.service.editProduct(id, dto);
     }
 
-    public Response findById(){
-        return null;
+    @DeleteMapping("/{id}")
+    public Response deleteById(@PathVariable Long id){
+        return this.service.deleteById(id);
     }
 
-    public Response findAllByPage(){
-        return null;
+    @GetMapping("/{id}")
+    public Response findById(@PathVariable Long id){
+        return this.service.findById(id);
     }
 
-    public Response findAllByTypeAndPage(){
-        return null;
+    @GetMapping
+    public Response findAllByTypeAndPage(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int limit, @RequestParam(required = false) Long type) {
+        return this.service.findAllByTypeAndPage(page, limit, type);
     }
 }

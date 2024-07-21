@@ -17,26 +17,26 @@ public class TypeProductController {
 
     @PostMapping
     @Operation(summary = "Добавить новый тип товара")
-    public Response saveType(@RequestBody TypeProductDto typeProductDto){
-        return this.service.saveType(typeProductDto);
+    public Response saveType(@RequestHeader String Authorization, @RequestBody TypeProductDto typeProductDto){
+        return this.service.saveType(typeProductDto, Authorization);
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Обновить существующий тип")
-    public Response updateType(@PathVariable Long id, @RequestBody TypeProductDto typeProductDto){
-        return this.service.updateType(id, typeProductDto);
+    public Response updateType(@RequestHeader String Authorization, @PathVariable Long id, @RequestBody TypeProductDto typeProductDto){
+        return this.service.updateType(id, typeProductDto, Authorization);
     }
 
     @Operation(summary = "Удалить тип товара")
     @DeleteMapping("/{id}")
-    public Response deleteById(@PathVariable Long id){
-        return this.service.deleteById(id);
+    public Response deleteById(@RequestHeader String Authorization, @PathVariable Long id){
+        return this.service.deleteById(id, Authorization);
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Найти один тип")
-    public Response findById(@PathVariable Long id){
-        return this.service.findById(id);
+    public Response findById(@RequestHeader String Authorization, @PathVariable Long id){
+        return this.service.findById(id, Authorization);
     }
 
     @GetMapping
