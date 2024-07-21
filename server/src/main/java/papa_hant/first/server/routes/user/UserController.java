@@ -7,7 +7,7 @@ import papa_hant.first.server.App.models.Response.Types.Response;
 import papa_hant.first.server.routes.user.dto.codeDto;
 import papa_hant.first.server.routes.user.service.UserService;
 
-@Tag(name = "Сервис пользователей")
+@Tag(name = "Сервис пользователей (админ)")
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor

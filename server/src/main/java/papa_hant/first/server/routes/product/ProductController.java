@@ -2,6 +2,7 @@ package papa_hant.first.server.routes.product;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import papa_hant.first.server.App.models.Response.Types.Response;
@@ -14,9 +15,11 @@ import papa_hant.first.server.routes.product.service.ProductService;
 public class ProductController {
     private final ProductService service;
 
+    @PostMapping()
     public Response saveProduct(){
         return null;
     }
+
 
     public Response editProduct(){
         return null;
