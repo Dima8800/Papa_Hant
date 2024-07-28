@@ -134,6 +134,16 @@ public class UserService {
         }
     }
 
+    public User getUser(String Authorization){
+        try {
+            return this.repository.findById(
+                    this.tokenService.getUserIdFromJWT(Authorization)
+            ).get();
+        }catch (Exception err){
+            throw new RuntimeException(err.getMessage());
+        }
+    }
+
     public boolean roleVerification(String Authorization){
         User admin = this.repository.findById(
                 tokenService.getUserIdFromJWT(Authorization)
